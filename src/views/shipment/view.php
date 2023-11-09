@@ -1,7 +1,6 @@
 <?php
 
 use yii\bootstrap5\Html;
-use ser6io\yii2bs5widgets\DetailView;
 use ser6io\yii2bs5widgets\FieldView;
 use ser6io\yii2bs5widgets\AddressCardWidget;
 
@@ -95,14 +94,6 @@ $buttonHtml = " <div class='btn-group'>{$button}{$dropDownMenu}</div>";
             <?= FieldView::widget(['model' => $model, 'attribute' => 'rma_number']) ?>
         </div>
     </div>
-
-    <br>
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'customer_order_number',
-        ],
-    ]) ?>
 
 </div>
 
