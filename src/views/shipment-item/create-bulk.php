@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= \yii\helpers\Html::activeHiddenInput($model, 'shipment_id') ?>
 
-    <?= $form->field($model, 'items')->textarea(['rows' => 10])->hint('Type or Copy&Paste Serial Numbers, one per line.') ?>
+    <?= $form->field($model, 'items')->textarea(['rows' => 10])->hint('Type or Copy&Paste Serial Numbers.') ?>
 
     <div class="form-group">
         <?= Html::submitButton('<i class="bi bi-file-earmark-arrow-up"></i> Upload', ['class' => 'btn btn-success mt-3']) ?>
