@@ -40,7 +40,7 @@ use ser6io\yii2bs5widgets\GridView;
                 'label' => 'Product',
                 'value' => function($model) {
                     if ($model->product) {
-                        return $model->product->name;
+                        return $model->product->name . ' ' . Html::a('<i class="bi bi-box-arrow-up-right"></i>', ['/logistics/product/view', 'id' => $model->product_id], ['title' => 'View Product', 'data-bs-toggle' => 'tooltip']);
                     } else {
                         return Html::tag('span', 'Not found', ['class' => 'badge bg-danger']);
                     }

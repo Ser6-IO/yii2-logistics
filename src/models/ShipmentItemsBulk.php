@@ -75,6 +75,7 @@ class ShipmentItemsBulk extends Model
      */
     public function getProductId($serial_number)
     {
+        //TODO: try to parse in a diffrent way, to match any product length, not 6 characters!!!!!!!
         //Find a Product by comparing the first 6 characters of the serial_number with the part_number
         $product = Product::find()
             ->where(['like', 'part_number', substr($serial_number, 0, 6)])
