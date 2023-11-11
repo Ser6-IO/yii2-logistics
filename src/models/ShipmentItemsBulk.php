@@ -56,7 +56,7 @@ class ShipmentItemsBulk extends Model
             $this->_models[] = new ShipmentItem([
                 'shipment_id' => $this->shipment_id,
                 'serial_number' => $item,
-                'product_id' => $this->getProductId($item),
+                'part_number_id' => $this->getPartNumberId($item),
                 'metadata' => '',
             ]);
         }
@@ -71,18 +71,18 @@ class ShipmentItemsBulk extends Model
     }
 
     /**
-     * Gets product_id from serial_number
+     * Gets part_number_id from serial_number
      */
-    public function getProductId($serial_number)
+    public function getPartNumberId($serial_number)
     {
-        //TODO: try to parse in a diffrent way, to match any product length, not 6 characters!!!!!!!
-        //Find a Product by comparing the first 6 characters of the serial_number with the part_number
-        $product = Product::find()
+        //TODO: try to parse in a diffrent way, to match any part_number length, not 6 characters!!!!!!!
+        //Find a PartNumber by comparing the first 6 characters of the serial_number with the part_number
+        $part_number = PartNumber::find()
             ->where(['like', 'part_number', substr($serial_number, 0, 6)])
             ->one();
 
-        if ($product) {
-            return $product->id;
+        if ($part_number) {
+            return $part_number->id;
         } else {
             return 0;
         }

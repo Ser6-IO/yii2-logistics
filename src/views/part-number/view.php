@@ -4,14 +4,14 @@ use yii\bootstrap5\Html;
 use ser6io\yii2bs5widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var ser6io\yii2logistics\models\Product $model */
+/** @var ser6io\yii2logistics\models\PartNumber $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Part Numbers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="product-view">
+<div class="part-number-view">
 
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 

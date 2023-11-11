@@ -49,7 +49,7 @@ class m231107_221432_create_shipment_table extends Migration
         $this->createTable('{{%shipment_item}}', [
             'id' => $this->primaryKey(),
             'shipment_id' => $this->integer()->notNull(),
-            'product_id' => $this->integer()->notNull(),
+            'part_number_id' => $this->integer()->notNull(),
             'serial_number' => $this->string(255),
             'metadata' => $this->json(),
         ]);

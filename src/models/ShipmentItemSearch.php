@@ -17,7 +17,7 @@ class ShipmentItemSearch extends ShipmentItem
     public function rules()
     {
         return [
-            [['id', 'shipment_id', 'product_id'], 'integer'],
+            [['id', 'shipment_id', 'part_number_id'], 'integer'],
             [['serial_number', 'metadata'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class ShipmentItemSearch extends ShipmentItem
         $query->andFilterWhere([
             'id' => $this->id,
             'shipment_id' => $this->shipment_id,
-            'product_id' => $this->product_id,
+            'part_number_id' => $this->part_number_id,
         ]);
 
         $query->andFilterWhere(['like', 'serial_number', $this->serial_number])

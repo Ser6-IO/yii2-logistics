@@ -14,7 +14,7 @@ use ser6io\yii2bs5widgets\ActiveForm;
 
     <?= $form->field($model, 'shipment_id')->textInput() ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+    <?= $form->field($model, 'part_number_id')->textInput() ?>
 
     <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
 

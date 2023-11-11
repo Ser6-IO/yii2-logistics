@@ -5,16 +5,16 @@ namespace ser6io\yii2logistics\migrations;
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%product}}`.
+ * Handles the creation of table `{{%part_number}}`.
  */
-class m231107_195404_create_product_table extends Migration
+class m231107_195404_create_part_number_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%product}}', [
+        $this->createTable('{{%part_number}}', [
             'id' => $this->primaryKey(),
 
             'name' => $this->string(255)->notNull(),
@@ -54,6 +54,6 @@ class m231107_195404_create_product_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%product}}');
+        $this->dropTable('{{%part_number}}');
     }
 }

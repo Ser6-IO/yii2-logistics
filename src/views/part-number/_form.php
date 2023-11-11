@@ -4,11 +4,11 @@ use yii\bootstrap5\Html;
 use ser6io\yii2bs5widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var ser6io\yii2logistics\models\Product $model */
+/** @var ser6io\yii2logistics\models\PartNumber $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="product-form">
+<div class="part-number-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

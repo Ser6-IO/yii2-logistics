@@ -1,7 +1,7 @@
 <?php
 
 use ser6io\yii2logistics\models\ShipmentItem;
-use ser6io\yii2logistics\models\Product;
+use ser6io\yii2logistics\models\PartNumber;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
@@ -34,17 +34,16 @@ use ser6io\yii2bs5widgets\GridView;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute' => 'product_id',
-                'filter' => Html::activeDropDownList($searchModel, 'product_id', ArrayHelper::map(Product::find()->asArray()->all(), 'id', 'name'), ['class' => 'form-control', 'prompt' => 'Search...']),
+                'attribute' => 'part_number_id',
+                'filter' => Html::activeDropDownList($searchModel, 'part_number_id', ArrayHelper::map(PartNumber::find()->asArray()->all(), 'id', 'name'), ['class' => 'form-control', 'prompt' => 'Search...']),
                 'format' => 'raw',
-                'label' => 'Product',
+                'label' => 'Model',
                 'value' => function($model) {
-                    if ($model->product) {
-                        return $model->product->name . ' ' . Html::a('<i class="bi bi-box-arrow-up-right"></i>', ['/logistics/product/view', 'id' => $model->product_id], ['title' => 'View Product', 'data-bs-toggle' => 'tooltip']);
+                    if ($model->part_number_id) {
+                        return $model->partNumber->name . ' ' . Html::a('<i class="bi bi-box-arrow-up-right"></i>', ['/logistics/part-number/view', 'id' => $model->part_number_id], ['title' => 'View Part Number', 'data-bs-toggle' => 'tooltip']);
                     } else {
                         return Html::tag('span', 'Not found', ['class' => 'badge bg-danger']);
                     }
-                    
                 }
             ],
             'serial_number',

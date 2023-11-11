@@ -33,7 +33,7 @@ class Logistics extends \yii\base\Module
         if (Yii::$app instanceof \yii\web\Application) {
             Yii::$app->params['secondaryMenu'] = [                
                 ['label' => '<i class="bi bi-box-seam"></i> Main', 'url' => ['/logistics/main/index'], 'visible' => Yii::$app->user->can('logisticsView')],
-                ['label' => '<i class="bi bi-boxes"></i> Products', 'url' => ['/logistics/product/index'], 'visible' => Yii::$app->user->can('logisticsView')],
+                ['label' => '<i class="bi bi-boxes"></i> Part Numbers', 'url' => ['/logistics/part-number/index'], 'visible' => Yii::$app->user->can('logisticsView')],
                 ['label' => '<i class="bi bi-truck"></i> Shipping', 'url' => ['/logistics/shipment/index'], 'visible' => Yii::$app->user->can('logisticsView')],
                 ['label' => '<i class="bi bi-buildings"></i> Warehouses', 'url' => ['/logistics/warehouse/index'], 'visible' => Yii::$app->user->can('logisticsView')],
             ];

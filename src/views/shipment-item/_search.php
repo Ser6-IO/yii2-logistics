@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'shipment_id') ?>
 
-    <?= $form->field($model, 'product_id') ?>
+    <?= $form->field($model, 'part_number_id') ?>
 
     <?= $form->field($model, 'serial_number') ?>
 

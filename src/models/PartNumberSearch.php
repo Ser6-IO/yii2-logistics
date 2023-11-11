@@ -5,12 +5,12 @@ namespace ser6io\yii2logistics\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use ser6io\yii2logistics\models\Product;
+use ser6io\yii2logistics\models\PartNumber;
 
 /**
- * ProductSearch represents the model behind the search form of `ser6io\yii2logistics\models\Product`.
+ * PartNumberSearch represents the model behind the search form of `ser6io\yii2logistics\models\PartNumber`.
  */
-class ProductSearch extends Product
+class PartNumberSearch extends PartNumber
 {
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find()->filterDeleted(Yii::$app->request->get('filter_deleted'));
+        $query = PartNumber::find()->filterDeleted(Yii::$app->request->get('filter_deleted'));
 
         // add conditions that should always apply here
 

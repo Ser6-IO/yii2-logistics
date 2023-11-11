@@ -7,7 +7,7 @@ use ser6io\yii2admin\models\User;
 use ser6io\yii2contacts\models\Organization;
 
 /**
- * This is the model class for table "product".
+ * This is the model class for table "part_number".
  *
  * @property int $id
  * @property string $name
@@ -32,14 +32,14 @@ use ser6io\yii2contacts\models\Organization;
  * @property int $updated_by
  * @property int $isDeleted
  */
-class Product extends \yii\db\ActiveRecord
+class PartNumber extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'product';
+        return 'part_number';
     }
 
     /**
@@ -85,8 +85,8 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'part_number' => 'Part Number',
+            'name' => 'Model',
+            'part_number' => '#',
             'mfg_part_number' => 'Mfg Part Number',
             'vendor_id' => 'Vendor ID',
             'status' => 'Status',
@@ -111,11 +111,11 @@ class Product extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return ProductQuery the active query used by this AR class.
+     * @return PartNumberQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ProductQuery(get_called_class());
+        return new PartNumberQuery(get_called_class());
     }
 
     public function getCreatedBy()

@@ -3,11 +3,11 @@
 namespace ser6io\yii2logistics\models;
 
 /**
- * This is the ActiveQuery class for [[Product]].
+ * This is the ActiveQuery class for [[PartNumber]].
  *
- * @see Product
+ * @see PartNumber
  */
-class ProductQuery extends \yii\db\ActiveQuery
+class PartNumberQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -25,7 +25,7 @@ class ProductQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Product[]|array
+     * @return PartNumber[]|array
      */
     public function all($db = null)
     {
@@ -34,7 +34,7 @@ class ProductQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Product|array|null
+     * @return PartNumber|array|null
      */
     public function one($db = null)
     {

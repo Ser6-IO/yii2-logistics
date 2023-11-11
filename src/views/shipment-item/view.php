@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'shipment_id',
-            'product_id',
+            'part_number_id',
             'serial_number',
             'metadata',
         ],

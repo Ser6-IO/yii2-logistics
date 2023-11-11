@@ -1,19 +1,19 @@
 <?php
 
-use ser6io\yii2logistics\models\Product;
+use ser6io\yii2logistics\models\PartNumber;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
 use ser6io\yii2bs5widgets\ActionColumn;
 use ser6io\yii2bs5widgets\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var ser6io\yii2logistics\models\ProductSearch $searchModel */
+/** @var ser6io\yii2logistics\models\PartNumberSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Products';
+$this->title = 'Part Numbers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="part-number-index">
 
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => ActionColumn::className(),
                 'template' => '{view}',
-                'urlCreator' => function ($action, Product $model, $key, $index, $column) {
+                'urlCreator' => function ($action, PartNumber $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

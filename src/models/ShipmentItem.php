@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int $shipment_id
- * @property int $product_id
+ * @property int $part_number_id
  * @property string|null $serial_number
  * @property string|null $metadata
  *
@@ -31,8 +31,8 @@ class ShipmentItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shipment_id', 'product_id'], 'required'],
-            [['shipment_id', 'product_id'], 'integer'],
+            [['shipment_id', 'part_number_id'], 'required'],
+            [['shipment_id', 'part_number_id'], 'integer'],
             [['metadata'], 'safe'],
             [['serial_number'], 'string', 'max' => 255],
             [['shipment_id'], 'exist', 'skipOnError' => true, 'targetClass' => Shipment::class, 'targetAttribute' => ['shipment_id' => 'id']],
@@ -48,7 +48,7 @@ class ShipmentItem extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'shipment_id' => 'Shipment ID',
-            'product_id' => 'Product ID',
+            'part_number_id' => 'Part Number ID',
             'serial_number' => 'Serial Number',
             'metadata' => 'Metadata',
         ];
@@ -65,11 +65,11 @@ class ShipmentItem extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Product]].
+     * Gets query for [[PartNumber]].
      */
-    public function getProduct()
+    public function getPartNumber()
     {
-        return $this->hasOne(Product::class, ['id' => 'product_id']);
+        return $this->hasOne(PartNumber::class, ['id' => 'part_number_id']);
     }
 
     /**
