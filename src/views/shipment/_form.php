@@ -5,13 +5,13 @@ use ser6io\yii2bs5widgets\ActiveForm;
 use ser6io\yii2bs5widgets\SearchModalWidget;
 
 use ser6io\yii2logistics\models\Shipment;
-use ser6io\yii2admin\models\User;
+use ser6io\yii2admin\models\UserAdmin;
 
 /** @var yii\web\View $this */
 /** @var ser6io\yii2logistics\models\Shipment $model */
 /** @var yii\widgets\ActiveForm $form */
 
-$userList = User::find()->where(['status' => User::STATUS_ACTIVE])->select(['username', 'id'])->indexBy('id')->column();
+$userList = UserAdmin::find()->where(['status' => UserAdmin::STATUS_ACTIVE])->select(['username', 'id'])->indexBy('id')->column();
 
 ?>
 

@@ -12,8 +12,6 @@ use ser6io\yii2logistics\models\Warehouse;
  */
 class MainController extends Controller
 {
-    public $layout = 'secondary';
-
     /**
      * @inheritDoc
      */

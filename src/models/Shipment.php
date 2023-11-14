@@ -3,7 +3,7 @@
 namespace ser6io\yii2logistics\models;
 
 use Yii;
-use ser6io\yii2admin\models\User;
+use ser6io\yii2admin\models\UserAdmin;
 use ser6io\yii2contacts\models\Address;
 
 /**
@@ -165,12 +165,12 @@ class Shipment extends \yii\db\ActiveRecord
 
     public function getCreatedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'created_by']);
+        return $this->hasOne(UserAdmin::class, ['id' => 'created_by']);
     }
 
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'updated_by']);
+        return $this->hasOne(UserAdmin::class, ['id' => 'updated_by']);
     }
 
     public function getShipTo()
@@ -185,17 +185,17 @@ class Shipment extends \yii\db\ActiveRecord
 
     public function getPreparedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'updated_by']);
+        return $this->hasOne(UserAdmin::class, ['id' => 'updated_by']);
     }
 
     public function getPackedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'updated_by']);
+        return $this->hasOne(UserAdmin::class, ['id' => 'updated_by']);
     }
 
     public function getShippedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'updated_by']);
+        return $this->hasOne(UserAdmin::class, ['id' => 'updated_by']);
     }
            
 }
