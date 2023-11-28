@@ -16,39 +16,6 @@ use yii\filters\VerbFilter;
 class ShipmentItemController extends Controller
 {
     /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'access' => [
-                    'class' => \yii\filters\AccessControl::class,
-                    'rules' => [ 
-                        [
-                            'actions' => ['index', 'view'],
-                            'allow' => true,
-                            'roles' => ['logisticsView'],
-                        ],
-                        [
-                            'actions' => ['update', 'create', 'create-bulk', 'delete'],
-                            'allow' => true,
-                            'roles' => ['logisticsAdmin'],
-                        ],
-                    ],
-                ],
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
-
-    /**
      * Lists all ShipmentItem models.
      *
      * @return string

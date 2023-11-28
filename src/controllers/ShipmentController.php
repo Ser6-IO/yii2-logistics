@@ -15,38 +15,22 @@ use yii\filters\VerbFilter;
  */
 class ShipmentController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
+    public function actions()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'access' => [
-                    'class' => \yii\filters\AccessControl::class,
-                    'rules' => [ 
-                        [
-                            'actions' => ['index', 'view'],
-                            'allow' => true,
-                            'roles' => ['logisticsView'],
-                        ],
-                        [
-                            'actions' => ['update', 'create', 'delete', 'set-status'],
-                            'allow' => true,
-                            'roles' => ['logisticsAdmin'],
-                        ],
-                    ],
-                ],
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                        'set-status' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'soft-delete' => [
+                'class' => 'ser6io\yii2admin\components\SoftDeleteAction',
+                'modelClass' => 'ser6io\yii2logistics\models\Shipment',
+            ],
+            'delete' => [
+                'class' => 'ser6io\yii2admin\components\DeleteAction',
+                'modelClass' => 'ser6io\yii2logistics\models\Shipment',
+            ],
+            'restore' => [
+                'class' => 'ser6io\yii2admin\components\RestoreAction',
+                'modelClass' => 'ser6io\yii2logistics\models\Shipment',
+            ],
+        ];
     }
 
     /**

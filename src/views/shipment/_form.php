@@ -91,7 +91,7 @@ $userList = UserAdmin::find()->where(['status' => UserAdmin::STATUS_ACTIVE])->se
         </div>
     </div>
 
-    <?= $form->field($model, 'notes')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'notes')->textarea(['style' => "height: 100px"]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('<i class="bi bi-check-circle"></i> Save', ['class' => 'btn btn-success mt-3']) ?>

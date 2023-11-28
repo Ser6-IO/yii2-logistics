@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $buttonCaption = $model::STATUS[$model->status];
 $buttonColor = $model::STATUS_COLOR[$model->status];
-$button = Html::button($buttonCaption, ['class' => "btn btn-$buttonColor dropdown-toggle", 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
+$buttonDisabled = $model->isDeleted ? ' disabled' : '';
+$button = Html::button($buttonCaption, ['class' => "btn btn-$buttonColor dropdown-toggle $buttonDisabled", 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
 $items = ['<li><h6 class="dropdown-header">Change to:</h6></li>'];
 foreach ($model::STATUS as $key => $value) {
     $items[] = ['label' => $value, 'url' => ['set-status', 'id' => $model->id, 'status' => $key], 'linkOptions' => ['data-method' => 'post']];
@@ -32,11 +33,13 @@ $buttonHtml = " <div class='btn-group'>{$button}{$dropDownMenu}</div>";
 
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
-        'groups' => [
-            ['buttons' => [['html' => $buttonHtml]], 'visible' => 'logisticsAdmin'],
-            ['buttons' => ['update', 'delete'], 'visible' => 'logisticsAdmin'],
-        ],
         'id' => $model->id,
+        'isDeleted' => $model->isDeleted,
+        'groups' => [
+            ['buttons' => [['html' => $buttonHtml]], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['update', 'soft-delete'], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['restore'], 'visible' => Yii::$app->user->can('admin')],
+        ],
     ]) ?>
 
     <?= \ser6io\yii2bs5widgets\CreatedByWidget::widget(['model' => $model]) ?>

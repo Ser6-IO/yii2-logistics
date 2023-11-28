@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
         'groups' => [
-            ['buttons' => ['create'], 'visible' => 'logisticsAdmin'],
+            ['buttons' => ['create'], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['show-deleted'], 'visible' => Yii::$app->user->can('admin')],  
         ],
     ]) ?>
 
@@ -37,17 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->address->organization->nickname;
                 }
             ],
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{view}',
-                'urlCreator' => function ($action, Warehouse $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+            ['class' => ActionColumn::className()],
         ],
     ]); ?>
 
 
 </div>
-
-<?= \ser6io\yii2bs5widgets\ShowDeletedWidget::widget() ?>

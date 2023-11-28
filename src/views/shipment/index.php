@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
         'groups' => [
-            ['buttons' => ['create'], 'visible' => 'logisticsAdmin'],
+            ['buttons' => ['create'], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['show-deleted'], 'visible' => Yii::$app->user->can('admin')],  
         ],
     ]) ?>
 
@@ -59,9 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'type',
             //'ship_from',
             //'prepared_by',
-            //'packed_by',
-            //'shipped_by',
-            //,
+            
             //'carrier_id',
             //'carrier_account',
             //'tracking_url:url',
@@ -69,24 +68,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'customer_order_number',
             //'vendor_order_number',
             //'rma_number',
-            //'notes:ntext',
-            //'created_at',
-            //'updated_at',
-            //'created_by',
-            //'updated_by',
-            //'isDeleted',
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{view}',
-                'urlCreator' => function ($action, Shipment $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+            
+            ['class' => ActionColumn::className()],
         ],
     ]); ?>
 
     <?php Pjax::end(); ?>
 
 </div>
-
-<?= \ser6io\yii2bs5widgets\ShowDeletedWidget::widget() ?>

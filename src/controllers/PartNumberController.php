@@ -6,44 +6,28 @@ use ser6io\yii2logistics\models\PartNumber;
 use ser6io\yii2logistics\models\PartNumberSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * PartNumberController implements the CRUD actions for PartNumber model.
  */
 class PartNumberController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
+    public function actions()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'access' => [
-                    'class' => \yii\filters\AccessControl::class,
-                    'rules' => [ 
-                        [
-                            'actions' => ['index', 'view'],
-                            'allow' => true,
-                            'roles' => ['logisticsView'],
-                        ],
-                        [
-                            'actions' => ['update', 'create', 'delete'],
-                            'allow' => true,
-                            'roles' => ['logisticsAdmin'],
-                        ],
-                    ],
-                ],
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'soft-delete' => [
+                'class' => 'ser6io\yii2admin\components\SoftDeleteAction',
+                'modelClass' => 'ser6io\yii2logistics\models\PartNumber',
+            ],
+            'delete' => [
+                'class' => 'ser6io\yii2admin\components\DeleteAction',
+                'modelClass' => 'ser6io\yii2logistics\models\PartNumber',
+            ],
+            'restore' => [
+                'class' => 'ser6io\yii2admin\components\RestoreAction',
+                'modelClass' => 'ser6io\yii2logistics\models\PartNumber',
+            ],
+        ];
     }
 
     /**
@@ -115,20 +99,6 @@ class PartNumberController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-    }
-
-    /**
-     * Deletes an existing PartNumber model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->softDelete();
-
-        return $this->redirect(['index']);
     }
 
     /**

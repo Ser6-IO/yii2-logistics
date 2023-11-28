@@ -13,28 +13,6 @@ use ser6io\yii2logistics\models\Warehouse;
 class MainController extends Controller
 {
     /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'access' => [
-                    'class' => \yii\filters\AccessControl::class,
-                    'rules' => [ 
-                        [
-                            'actions' => ['index'],
-                            'allow' => true,
-                            'roles' => ['logisticsView'],
-                        ],   
-                    ],
-                ],
-            ]
-        );
-    }
-
-    /**
      * Renders the index view for the Admin controller
      * @return string
      */

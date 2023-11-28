@@ -18,9 +18,13 @@ use ser6io\yii2bs5widgets\GridView;
         'title' => 'Items', 
         'groups' => [
             [
-                'visible' => 'logisticsAdmin',
+                //'visible' => 'logistics',
+                'visible' => (($shipment->status == 0) and Yii::$app->user->can('logistics')) ? true : false,
                 'buttons' => [
-                    ['label' => '<i class="bi bi-file-earmark-arrow-up"></i>', 'url' => ['/logistics/shipment-item/create-bulk', 's_id' => $shipment->id], 'options' => ['class' => 'btn btn-outline-info', 'data-bs-toggle' => 'tooltip', 'title' => 'Upload items']]
+                    [
+                        'label' => '<i class="bi bi-file-earmark-arrow-up"></i>', 
+                        'url' => ['/logistics/shipment-item/create-bulk', 's_id' => $shipment->id], 
+                        'options' => ['class' => 'btn btn-outline-info', 'data-bs-toggle' => 'tooltip', 'title' => 'Upload items']]
                 ], 
             ],
         ],
@@ -50,7 +54,7 @@ use ser6io\yii2bs5widgets\GridView;
             //'metadata',
             [
                 'class' => ActionColumn::className(),
-                'visible' => ($shipment->status == 0) and Yii::$app->user->can('logisticsAdmin') ? true : false,
+                'visible' => ($shipment->status == 0) and Yii::$app->user->can('logistics') ? true : false,
                 'template' => '{delete}',
                 'urlCreator' => function ($action, ShipmentItem $model, $key, $index, $column) {
                     return Url::toRoute(["shipment-item/$action", 'id' => $model->id]);

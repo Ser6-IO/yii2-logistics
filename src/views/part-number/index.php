@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
         'groups' => [
-            ['buttons' => ['create'], 'visible' => 'logisticsAdmin'],
+            ['buttons' => ['create'], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['show-deleted'], 'visible' => Yii::$app->user->can('admin')],  
         ],
     ]) ?>
 
@@ -41,25 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'class',
             //'minor_HW_version',
             //'major_HW_version',
-            //'metadata',
-            //'notes:ntext',
-            //'created_at',
-            //'updated_at',
-            //'created_by',
-            //'updated_by',
-            //'isDeleted',
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{view}',
-                'urlCreator' => function ($action, PartNumber $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+            ['class' => ActionColumn::className()],
         ],
     ]); ?>
 
     <?php Pjax::end(); ?>
 
 </div>
-
-<?= \ser6io\yii2bs5widgets\ShowDeletedWidget::widget() ?>

@@ -15,11 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= \ser6io\yii2bs5widgets\ToolBarWidget::widget([
         'title' => $this->title, 
+        'id' => $model->id,
         'isDeleted' => $model->isDeleted,
         'groups' => [
-            ['buttons' => ['update', 'delete'], 'visible' => 'logisticsAdmin'],
-        ],
-        'id' => $model->id,
+            
+            ['buttons' => ['update', 'soft-delete'], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => ['restore'], 'visible' => Yii::$app->user->can('admin')],
+        ],    
     ]) ?>
 
     <?= DetailView::widget([
