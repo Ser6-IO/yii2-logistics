@@ -42,7 +42,7 @@ $userList = UserAdmin::find()->where(['status' => UserAdmin::STATUS_ACTIVE])->se
                 'relation' => 'shipFrom',
                 'label' => 'Ship from',
                 'searchUrl' => '/contacts/address/search-address-by-org-name',
-                'createUrl' => '/contacts/organization/create',
+                'createUrl' => ['/contacts/contact/create', 'type' => 1],
             ]) ?>
         </div>
         <div class="col-lg-6">
@@ -53,7 +53,7 @@ $userList = UserAdmin::find()->where(['status' => UserAdmin::STATUS_ACTIVE])->se
                 'relation' => 'shipTo',
                 'label' => 'Ship to',
                 'searchUrl' => '/contacts/address/search-address-by-org-name',
-                'createUrl' => '/contacts/organization/create',
+                'createUrl' => ['/contacts/contact/create', 'type' => 1],
             ]) ?>
         </div>
     </div>
