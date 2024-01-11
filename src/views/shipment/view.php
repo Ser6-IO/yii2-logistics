@@ -3,6 +3,7 @@
 use yii\bootstrap5\Html;
 use ser6io\yii2bs5widgets\FieldView;
 use ser6io\yii2bs5widgets\AddressCardWidget;
+use ser6io\yii2bs5widgets\StatusButtonWidget;
 
 /** @var yii\web\View $this */
 /** @var ser6io\yii2logistics\models\Shipment $model */
@@ -11,22 +12,14 @@ $this->title = "Shipment $model->id";
 $this->params['breadcrumbs'][] = ['label' => 'Shipments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-
-//TODO: Move to Widget
-
-$buttonCaption = $model::STATUS[$model->status];
-$buttonColor = $model::STATUS_COLOR[$model->status];
-$buttonDisabled = $model->isDeleted ? ' disabled' : '';
-$button = Html::button($buttonCaption, ['class' => "btn btn-$buttonColor dropdown-toggle $buttonDisabled", 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
-$items = ['<li><h6 class="dropdown-header">Change to:</h6></li>'];
-foreach ($model::STATUS as $key => $value) {
-    $items[] = ['label' => $value, 'url' => ['set-status', 'id' => $model->id, 'status' => $key], 'linkOptions' => ['data-method' => 'post']];
-}
-array_splice($items, -1, 0, ['<li><hr class="dropdown-divider"></li>']);//Add divider before the last item
-$dropDownMenu = \yii\bootstrap5\Dropdown::widget(['items' => $items]);
-
-$buttonHtml = " <div class='btn-group'>{$button}{$dropDownMenu}</div>";
-
+$statusButton = StatusButtonWidget::widget([
+    'model' => $model,
+    'caption' => $model::STATUS[$model->status],
+    'header' => 'Change to:',
+    'color' => $model::STATUS_COLOR[$model->status],
+    'disabled' => $model->isDeleted,
+    'items' => $model::STATUS,
+]);
 
 ?>
 <div class="shipment-view">
@@ -36,7 +29,7 @@ $buttonHtml = " <div class='btn-group'>{$button}{$dropDownMenu}</div>";
         'id' => $model->id,
         'isDeleted' => $model->isDeleted,
         'groups' => [
-            ['buttons' => [['html' => $buttonHtml]], 'visible' => Yii::$app->user->can('logistics')],
+            ['buttons' => [['html' => $statusButton]], 'visible' => Yii::$app->user->can('logistics')],
             ['buttons' => ['update', 'soft-delete'], 'visible' => Yii::$app->user->can('logistics')],
             ['buttons' => ['restore'], 'visible' => Yii::$app->user->can('admin')],
         ],

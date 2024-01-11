@@ -43,9 +43,11 @@ class Logistics extends \yii\base\Module
                     ],
                 ],
                 'verbs' => [
-                    'class' => \yii\filters\VerbFilter::className(),
+                    'class' => \yii\filters\VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
+                        'set-status' => ['POST'],
+                        'soft-delete' => ['POST'],
                     ],
                 ],
             ]
