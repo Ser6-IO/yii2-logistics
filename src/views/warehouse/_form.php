@@ -22,7 +22,7 @@ use ser6io\yii2bs5widgets\SearchModalWidget;
         'attribute' => 'address_id',
         //'label' => 'Organization',
         'searchUrl' => '/contacts/address/search-address-by-org-name',
-        'createUrl' => '/contacts/organization/create',
+        'createUrl' => '/contacts/contact/create',
     ]) ?>
         
     <div class="form-group">
